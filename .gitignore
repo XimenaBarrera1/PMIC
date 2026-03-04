@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/pmic.db
+data/images_procesadas/
+.env
