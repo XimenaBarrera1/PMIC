@@ -25,7 +25,7 @@ def worker_marca(cola_marca, id_proceso):
 
                 draw = ImageDraw.Draw(img)
 
-                # 🔹 Tamaño dinámico del texto
+                #Tamaño dinámico del texto
                 tamaño_fuente = int(ancho * 0.05)
 
                 try:
@@ -37,7 +37,7 @@ def worker_marca(cola_marca, id_proceso):
                 texto_ancho = bbox[2] - bbox[0]
                 texto_alto = bbox[3] - bbox[1]
 
-                # 🔹 Posición esquina inferior derecha con margen
+                #Posición de la marca de agua en la esquina inferior derecha con margen
                 margen = 10
                 posicion = (
                     ancho - texto_ancho - margen,
@@ -48,7 +48,7 @@ def worker_marca(cola_marca, id_proceso):
                     posicion,
                     texto,
                     font=fuente,
-                    fill=(255, 0, 0, 180)  # rojo semi-transparente
+                    fill=(255, 0, 0, 180) 
                 )
 
                 nombre_base = os.path.basename(ruta_imagen)

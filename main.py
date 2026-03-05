@@ -19,7 +19,7 @@ class ProcesoRequest(BaseModel):
 @app.post("/procesar")
 def procesar(request: ProcesoRequest):
 
-    # 🔎 VALIDACIONES NUEVAS (solo aquí)
+    #Validacion de url
 
     if not request.urls:
         raise HTTPException(

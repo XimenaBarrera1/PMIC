@@ -23,13 +23,13 @@ def worker_formato(cola_formato, cola_marca, id_proceso):
 
             ext = ext.lower()
 
-            # 🔥 CASO 1: YA ES PNG → NO SE CONVIERTE
+            #Validacion de formato PNG
             if ext == ".png":
 
-                ruta_salida = ruta_imagen  # Se deja igual
+                ruta_salida = ruta_imagen  
                 nuevo_nombre = nombre_base
 
-            # 🔥 CASO 2: NO ES PNG → CONVERTIR
+            # Si no es PNG realizar conversion
             else:
                 with Image.open(ruta_imagen) as img:
 
@@ -57,7 +57,7 @@ def worker_formato(cola_formato, cola_marca, id_proceso):
 
             insertar_archivo(datos)
 
-            # Siempre pasa a la cola de marca
+            # Pasa a la cola de marca
             cola_marca.put(ruta_salida)
 
         except Exception as e:

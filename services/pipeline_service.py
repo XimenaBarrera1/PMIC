@@ -32,11 +32,11 @@ def iniciar_proceso(
 
     insertar_proceso(id_proceso, fecha_inicio, total_archivos)
 
-    # Crear carpeta del proceso
+    # Creacion de carpeta del proceso
     ruta_proceso = os.path.join(RUTA_PROCESADAS, id_proceso)
     os.makedirs(ruta_proceso, exist_ok=True)
 
-    # Crear colas
+    # Creacion de colas
     cola_descarga = queue.Queue()
     cola_resize = queue.Queue()
     cola_formato = queue.Queue()
@@ -98,7 +98,7 @@ def iniciar_proceso(
             fecha_fin - datetime.fromisoformat(fecha_inicio)
         ).total_seconds()
 
-        # 🔥 NUEVA LÓGICA DE ESTADO FINAL
+        
         conn = sqlite3.connect(DATABASE)
         cursor = conn.cursor()
 
