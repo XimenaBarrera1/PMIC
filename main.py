@@ -4,8 +4,12 @@ from typing import List
 import sqlite3
 
 from services.pipeline_service import iniciar_proceso
+from database import inicializar_db  
 
 app = FastAPI(title="PMIC API")
+
+
+inicializar_db()
 
 
 class ProcesoRequest(BaseModel):
@@ -19,8 +23,7 @@ class ProcesoRequest(BaseModel):
 @app.post("/procesar")
 def procesar(request: ProcesoRequest):
 
-    #Validacion de url
-
+    # Validacion de url
     if not request.urls:
         raise HTTPException(
             status_code=400,
@@ -47,7 +50,6 @@ def procesar(request: ProcesoRequest):
             request.workers_marca
         )
     except Exception as e:
-        # Captura cualquier error interno del pipeline
         raise HTTPException(
             status_code=500,
             detail=f"Error interno al iniciar el proceso: {str(e)}"
@@ -69,7 +71,6 @@ def consultar_estado(id_proceso: str):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # Obtener información general del proceso
     cursor.execute(
         "SELECT * FROM procesos WHERE id = ?",
         (id_proceso,)
@@ -80,7 +81,6 @@ def consultar_estado(id_proceso: str):
         conn.close()
         raise HTTPException(status_code=404, detail="Proceso no encontrado")
 
-    # Métricas por etapa
     cursor.execute("""
         SELECT 
             etapa,
@@ -111,7 +111,6 @@ def consultar_estado(id_proceso: str):
 
         total_error_global += fallidos
 
-    # Resumen global
     total_recibidos = proceso["total_archivos"]
 
     porcentaje_exito = (
@@ -143,4 +142,4 @@ def consultar_estado(id_proceso: str):
 
 @app.get("/")
 def root():
-    return {"mensaje": "PMIC API funcionando"}
+    return {"mensaje": "PMIC API funcionando"} 
