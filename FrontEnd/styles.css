@@ -1,0 +1,90 @@
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --success: #10b981;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--dark);
+    margin: 0;
+    padding: 30px;
+}
+
+.main-wrapper { max-width: 1200px; margin: 0 auto; }
+.main-header { text-align: center; margin-bottom: 30px; }
+.main-header h1 { font-size: 2.5rem; margin: 0; color: var(--primary); }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 25px;
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.panel-title {
+    font-size: 1.1rem;
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%; height: 120px; padding: 12px;
+    border: 1px solid var(--border); border-radius: 6px;
+    box-sizing: border-box; resize: none; font-family: inherit;
+}
+
+.workers-container {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;
+}
+
+.worker-field label { display: block; font-size: 0.75rem; font-weight: 600; color: #64748b; margin-bottom: 5px; }
+.worker-field input { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; }
+
+.btn-action {
+    width: 100%; padding: 14px; background: var(--primary); color: white;
+    border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
+}
+
+.btn-search {
+    padding: 0 20px; background: var(--dark); color: white; border: none; border-radius: 6px; cursor: pointer;
+}
+
+.search-group { display: flex; gap: 10px; margin-bottom: 25px; }
+.search-group input { flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 6px; }
+
+/* ESTILOS DE TABLAS Y DATOS */
+.data-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 20px;
+}
+
+.data-table th {
+    text-align: left; background: #f1f5f9; padding: 10px; font-size: 0.8rem; text-transform: uppercase;
+}
+
+.data-table td { padding: 12px 10px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+
+.info-card {
+    background: #f8fafc; border: 1px solid var(--border);
+    padding: 15px; border-radius: 8px; margin-bottom: 20px;
+}
+
+.info-card p { margin: 5px 0; font-size: 0.9rem; }
+
+.section-h3 { font-size: 1rem; margin: 25px 0 10px 0; color: var(--primary); }
+
+.id-display { margin-top: 15px; color: var(--success); font-weight: bold; text-align: center; }
+
+@media (max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
