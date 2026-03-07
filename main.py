@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List
 import sqlite3
@@ -148,6 +149,4 @@ def consultar_estado(id_proceso: str):
     }
 
 
-@app.get("/")
-def root():
-    return {"mensaje": "PMIC API funcionando"} 
+app.mount("/", StaticFiles(directory="FrontEnd", html=True), name="index.html")

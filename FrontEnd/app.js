@@ -1,4 +1,5 @@
-const API = "http://127.0.0.1:8001";
+const API = window.location.origin;
+
 
 async function iniciarProceso() {
     const urlsVal = document.getElementById("urls").value.trim();
