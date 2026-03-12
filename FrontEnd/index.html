@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMIC - Panel de Control</title>
+
+    <!--
+    Se actualizó este archivo para:
+    - corregir la referencia al archivo CSS
+    - agregar validación mínima en los inputs numéricos
+    - mejorar los nombres visibles de las etapas
+    -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -18,27 +25,31 @@
     <div class="dashboard-grid">
         <section class="panel">
             <h2 class="panel-title">Iniciar Nuevo Proceso</h2>
+
             <div class="input-block">
-                <label>URLs de Imágenes</label>
+                <label for="urls">URLs de Imágenes</label>
                 <textarea id="urls" placeholder="Introduce una URL por línea..."></textarea>
             </div>
 
             <div class="workers-container">
                 <div class="worker-field">
-                    <label>Descarga</label>
-                    <input type="number" id="workers_descarga" value="2">
+                    <label for="workers_descarga">Descarga</label>
+                    <input type="number" id="workers_descarga" value="2" min="1">
                 </div>
+
                 <div class="worker-field">
-                    <label>Resize</label>
-                    <input type="number" id="workers_resize" value="2">
+                    <label for="workers_resize">Redimensionamiento</label>
+                    <input type="number" id="workers_resize" value="2" min="1">
                 </div>
+
                 <div class="worker-field">
-                    <label>Formato</label>
-                    <input type="number" id="workers_formato" value="2">
+                    <label for="workers_formato">Conversión a PNG</label>
+                    <input type="number" id="workers_formato" value="2" min="1">
                 </div>
+
                 <div class="worker-field">
-                    <label>Marca</label>
-                    <input type="number" id="workers_marca" value="2">
+                    <label for="workers_marca">Marca de Agua</label>
+                    <input type="number" id="workers_marca" value="2" min="1">
                 </div>
             </div>
 
@@ -48,6 +59,7 @@
 
         <section class="panel">
             <h2 class="panel-title">Estado de la Operación</h2>
+
             <div class="search-group">
                 <input type="text" id="id_proceso" placeholder="ID del Proceso">
                 <button class="btn-search" onclick="consultarEstado()">Consultar</button>

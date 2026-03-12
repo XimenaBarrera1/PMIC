@@ -32,7 +32,7 @@ class ProcesoRequest(BaseModel):
 @app.post("/procesar")
 def procesar(request: ProcesoRequest):
 
-    # Validacion de url
+    # # Validación básica, debe existir al menos una URL
     if not request.urls:
         raise HTTPException(
             status_code=400,
